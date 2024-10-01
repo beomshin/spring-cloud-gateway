@@ -15,7 +15,7 @@ spring:
           - id: lawgg-admin-spring
             uri: lb://LAWGG-ADMIN
             predicates:
-              - Path=/lawgg-ad-spring/**
+              - Path=/lawgg-ad/**
           - id: formdang-api-spring
             uri: lb://FORMDANG-API
             predicates:
