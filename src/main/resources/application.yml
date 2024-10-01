@@ -3,8 +3,8 @@ server:
 
 eureka:
   client:
-    register-with-eureka: false
-    fetch-registry: false
+    register-with-eureka: true
+    fetch-registry: true
     service-url:
       defaultZone: http://localhost:8761/eureka/
 
@@ -15,12 +15,20 @@ spring:
     gateway:
       mvc:
         routes:
-          - id: lawgg-web
-            uri: http://localhost:19001/
+          - id: lawgg-web-spring
+            uri: lb://LAWGG-WEB
             predicates:
               - Path=/lawgg/**
-          - id: formdang-api
-            uri: http://localhost:12001/
+          - id: lawgg-admin-spring
+            uri: lb://LAWGG-ADMIN
+            predicates:
+              - Path=/lawgg-ad-spring/**
+          - id: formdang-api-spring
+            uri: lb://FORMDANG-API
             predicates:
               - Path=/formdang-spring/**
+          - id: formdang-auth-spring
+            uri: lb://FORMDANG-AUTH
+            predicates:
+              - Path=/formdang-spring-auth/**
 

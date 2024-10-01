@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  spring-cloud-gateway:
+    image: ${DOCKER_IMAGE_NAME}
+    container_name: ${DOCKER_CONTAINER_NAME}
+    ports:
+      - "${PORT}:${PORT}"
+    networks:
+      - lawgg-network
+      - formdang-network
+      - zabbix-net
+    volumes:
+      -  logs:/logs
+    environment:
+      - ACTIVE_PROFILE=${PROFILE}
+    restart: unless-stopped
+
+networks:
+  lawgg-network:
+    external: true
+  formdang-network:
+    external: true
+  zabbix-net:
+    external: true
+
+volumes:
+  logs:
+    external: true
