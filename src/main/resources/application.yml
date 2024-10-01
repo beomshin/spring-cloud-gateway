@@ -1,13 +1,6 @@
 server:
   port: 8000
 
-eureka:
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
-
 spring:
   application:
     name: spring-cloud-gateway
@@ -31,4 +24,6 @@ spring:
             uri: lb://FORMDANG-AUTH
             predicates:
               - Path=/formdang-spring-auth/**
+  profiles:
+    active: local
 
