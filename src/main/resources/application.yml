@@ -1,0 +1,26 @@
+server:
+  port: 8000
+
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+spring:
+  application:
+    name: spring-cloud-gateway
+  cloud:
+    gateway:
+      mvc:
+        routes:
+          - id: lawgg-web
+            uri: http://localhost:19001/
+            predicates:
+              - Path=/lawgg/**
+          - id: formdang-api
+            uri: http://localhost:12001/
+            predicates:
+              - Path=/formdang-spring/**
+
