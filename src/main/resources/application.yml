@@ -26,4 +26,11 @@ spring:
               - Path=/formdang-spring-auth/**
   profiles:
     active: local
-
+    group:
+      local:
+        - console-logging
+      test:
+        - console-logging
+      prod:
+        - console-logging
+        - file-logging
