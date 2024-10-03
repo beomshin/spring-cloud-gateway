@@ -26,7 +26,7 @@ public class RouteConfig {
                         .uri("lb://LAWGG-ADMIN"))
                 .route("formdang-api-spring", r -> r
                         .path("/formdang-spring/**")
-                        .filters(f -> f.filter(authenticationFilter.apply(new AuthenticationFilter.Config())))
+//                        .filters(f -> f.filter(authenticationFilter.apply(new AuthenticationFilter.Config())))
                         .uri("lb://FORMDANG-API"))
                 .build();
     }
