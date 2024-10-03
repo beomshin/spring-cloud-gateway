@@ -4,3 +4,7 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: http://spring-cloud-eureka:8761/eureka/
+
+proxy:
+  auth:
+    url: http://formdang-auth-spring:22081/formdang-spring-auth/validate

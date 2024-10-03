@@ -1,10 +1,10 @@
 package com.kr.cground.filter;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.gateway.filter.GatewayFilter;
 import org.springframework.cloud.gateway.filter.factory.AbstractGatewayFilterFactory;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
@@ -16,9 +16,10 @@ import java.nio.charset.StandardCharsets;
 @Component
 public class AuthenticationFilter extends AbstractGatewayFilterFactory<AuthenticationFilter.Config> {
 
+    @Value("${proxy.auth.url}")
+    private String proxyAuthUrl;
 
     public static class Config {
-        private final String uri = "http://localhost:22081/formdang-spring-auth/validate";
     }
 
     @Override
@@ -32,7 +33,7 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
 
             return WebClient.builder().build()
                     .post()
-                    .uri(config.uri) // 인증 서버의 URL
+                    .uri(proxyAuthUrl) // 인증 서버의 URL
                     .header("Authorization", exchange.getRequest().getHeaders().getFirst("Authorization"))
                     .retrieve()
                     .toBodilessEntity()
