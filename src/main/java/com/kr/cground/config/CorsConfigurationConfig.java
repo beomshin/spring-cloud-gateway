@@ -11,14 +11,14 @@ public class CorsConfigurationConfig {
 
     @Bean
     public CorsWebFilter corsWebFilter() {
-        CorsConfiguration corsConfig = new CorsConfiguration ();
-        corsConfig.setAllowCredentials(true); // Required for credentials
-        corsConfig.addAllowedOrigin("https://formdang.com"); // Allow specific domain
-        corsConfig.addAllowedHeader("*");
-        corsConfig.addAllowedMethod("*");
+        CorsConfiguration configuration = new CorsConfiguration();
+        configuration.addAllowedOriginPattern("*");
+        configuration.addAllowedHeader("*");
+        configuration.addAllowedMethod("*");
+        configuration.setAllowCredentials(true);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", corsConfig);
+        source.registerCorsConfiguration("/**", configuration);
 
         return new CorsWebFilter(source);
     }
