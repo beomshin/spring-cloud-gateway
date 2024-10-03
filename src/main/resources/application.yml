@@ -19,7 +19,8 @@ spring:
       globalcors:
         cors-configurations:
           '[/**]':
-            allowedOrigins: '*'
+            allowed-origin-patterns:
+              -  '*'
             allow-credentials: true # JWT 나 쿠키를 사용해 메시지를 보내야 할 경우 true
             allowedHeaders: '*'
             allowedMethods: # 메서드를 명시하지 않으면 안되는 경우도 있기 때문에 메서드는 명시해주는 편이 좋다고 한다.
