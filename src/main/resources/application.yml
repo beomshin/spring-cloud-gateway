@@ -4,26 +4,6 @@ server:
 spring:
   application:
     name: spring-cloud-gateway
-  cloud:
-    gateway:
-      mvc:
-        routes:
-          - id: lawgg-web-spring
-            uri: lb://LAWGG-WEB
-            predicates:
-              - Path=/lawgg/**
-          - id: lawgg-admin-spring
-            uri: lb://LAWGG-ADMIN
-            predicates:
-              - Path=/lawgg-admin-spring/**
-          - id: formdang-api-spring
-            uri: lb://FORMDANG-API
-            predicates:
-              - Path=/formdang-spring/**
-          - id: formdang-auth-spring
-            uri: lb://FORMDANG-AUTH
-            predicates:
-              - Path=/formdang-spring-auth/**
   profiles:
     active: local
     group:
