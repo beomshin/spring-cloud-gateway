@@ -14,18 +14,3 @@ spring:
       prod:
         - console-logging
         - file-logging
-
-  cloud:
-    gateway:
-      globalcors:
-        cors-configurations:
-          '[/formdang-spring/**]':
-            allow-credentials: true
-            allowed-origins: "https://formdang.com/"
-            allowed-headers: "*"
-            allowed-methods:
-              - PUT
-              - GET
-              - POST
-              - DELETE
-              - OPTIONS
