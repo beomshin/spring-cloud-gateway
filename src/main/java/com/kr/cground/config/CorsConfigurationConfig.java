@@ -13,7 +13,7 @@ public class CorsConfigurationConfig {
     public CorsWebFilter corsWebFilter() {
         CorsConfiguration corsConfig = new CorsConfiguration ();
         corsConfig.setAllowCredentials(true); // Required for credentials
-        corsConfig.addAllowedOrigin("*"); // Allow specific domain
+        corsConfig.addAllowedOrigin("https://formdang.com"); // Allow specific domain
         corsConfig.addAllowedHeader("*");
         corsConfig.addAllowedMethod("*");
 
