@@ -60,16 +60,24 @@ public class LoggingGlobalFilter implements GlobalFilter {
                 log.info("Request: {} → {} [{}] [{}]", realClientIp, clientIp, request.getMethod(), request.getURI());
             }
 
+            printHeader(request);
+            printParameter(request);
+
+
             Route route = exchange.getAttribute(ServerWebExchangeUtils.GATEWAY_ROUTE_ATTR);
 
             if (route != null) {
-                log.info("RequestL: Route routeId: {}, routeUri: {}", route.getId(), route.getUri());
+                log.info("Route routeUri: {} >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", route.getUri());
             }
-
-            printParameter(request);
         }
 
         return new RequestBodyDecorator(exchange);
+    }
+
+    private void  printHeader(ServerHttpRequest request) {
+        for (String name : request.getHeaders().keySet()) {
+            log.debug("header[{}] = {}", name, request.getHeaders().get(name));
+        }
     }
 
     private void printParameter(ServerHttpRequest request) {
