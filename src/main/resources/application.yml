@@ -5,8 +5,8 @@ spring:
   application:
     name: spring-cloud-gateway
   config:
-    import: optional:configserver:http://spring-cloud-config:8888/ # spring cloud config 정보 조회 (서버 종료 option 처리)
-#    import: optional:configserver:http://192.168.0.3:8888/ # spring cloud config 정보 조회 (서버 종료 option 처리)
+#    import: optional:configserver:http://spring-cloud-config:8888/ # spring cloud config 정보 조회 (서버 종료 option 처리)
+    import: optional:configserver:http://192.168.0.3:8888/ # spring cloud config 정보 조회 (서버 종료 option 처리)
   profiles:
     active: local
     group:
@@ -17,3 +17,7 @@ spring:
       prod:
         - console-logging
         - file-logging
+  cloud:
+    gateway:
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Origin Access-Control-Allow-Credentials
